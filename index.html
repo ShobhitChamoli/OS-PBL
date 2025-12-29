@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>MediCare Plus - Login</title>
+  <link rel="icon" type="image/x-icon" href="images/favicon.ico">
+
+  <!-- Fonts & Icons -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+
+  <style>
+    :root {
+      --primary: #2563eb;
+      --secondary: #10b981;
+      --danger: #ef4444;
+      --light: #f9fafb;
+      --dark: #1f2937;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Inter', sans-serif;
+    }
+
+    body {
+      min-height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background: linear-gradient(135deg, #2563eb, #10b981);
+      position: relative;
+    }
+
+    .login-container {
+      width: 400px;
+      max-width: 95%;
+      padding: 2rem;
+      border-radius: 1.5rem;
+      background: rgba(255, 255, 255, 0.15);
+      backdrop-filter: blur(12px);
+      box-shadow: 0 8px 30px rgba(0, 0, 0, 0.2);
+      color: white;
+      animation: fadeInUp 0.8s ease;
+    }
+
+    .login-header {
+      text-align: center;
+      margin-bottom: 1.5rem;
+    }
+
+    .login-header i {
+      font-size: 2rem;
+      color: var(--secondary);
+    }
+
+    .login-header h2 {
+      margin-top: 0.5rem;
+      font-weight: 700;
+    }
+
+    .form-group {
+      margin-bottom: 1rem;
+      position: relative;
+    }
+
+    .form-group input {
+      width: 100%;
+      padding: 0.9rem 1rem 0.9rem 2.8rem;
+      border: none;
+      border-radius: 0.8rem;
+      background: rgba(255, 255, 255, 0.2);
+      color: #fff;
+      font-size: 0.95rem;
+      outline: none;
+    }
+
+    .form-group input::placeholder {
+      color: #d1d5db;
+    }
+
+    .form-group i {
+      position: absolute;
+      top: 50%;
+      left: 0.9rem;
+      transform: translateY(-50%);
+      color: #d1d5db;
+    }
+
+    .btn {
+      width: 100%;
+      padding: 0.9rem;
+      border: none;
+      border-radius: 0.8rem;
+      font-size: 1rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+
+    .btn-primary {
+      background: var(--secondary);
+      color: white;
+    }
+
+    .btn-primary:hover {
+      background: #059669;
+    }
+
+    .options {
+      margin-top: 1rem;
+      display: flex;
+      justify-content: space-between;
+      font-size: 0.85rem;
+    }
+
+    .options a {
+      color: #f9fafb;
+      text-decoration: none;
+      transition: 0.3s;
+    }
+
+    .options a:hover {
+      text-decoration: underline;
+    }
+
+    .divider {
+      margin: 1.5rem 0;
+      text-align: center;
+      font-size: 0.85rem;
+      color: #e5e7eb;
+      position: relative;
+    }
+
+    .divider::before, .divider::after {
+      content: "";
+      position: absolute;
+      top: 50%;
+      width: 40%;
+      height: 1px;
+      background: rgba(255, 255, 255, 0.3);
+    }
+
+    .divider::before { left: 0; }
+    .divider::after { right: 0; }
+
+    .social-login {
+      display: flex;
+      justify-content: space-between;
+    }
+
+    .social-btn {
+      flex: 1;
+      margin: 0 0.3rem;
+      padding: 0.8rem;
+      border: none;
+      border-radius: 0.8rem;
+      background: rgba(255, 255, 255, 0.2);
+      color: #fff;
+      font-size: 1.2rem;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+
+    .social-btn:hover {
+      background: rgba(255, 255, 255, 0.35);
+    }
+
+    .error-msg {
+      background: rgba(239, 68, 68, 0.3);
+      color: #fff;
+      padding: 0.7rem;
+      border-radius: 0.5rem;
+      margin-bottom: 1rem;
+      text-align: center;
+      display: none;
+    }
+
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(40px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="login-container">
+    <div class="login-header">
+      <i class="fas fa-heartbeat"></i>
+      <h2>Hospital_manage</h2>
+      <p>Login to continue</p>
+    </div>
+
+    <div class="error-msg" id="errorMsg"></div>
+
+    <form id="loginForm">
+      <div class="form-group">
+        <i class="fas fa-user"></i>
+        <input type="text" id="username" placeholder="Username or Email" required>
+      </div>
+      <div class="form-group">
+        <i class="fas fa-lock"></i>
+        <input type="password" id="password" placeholder="Password" required>
+      </div>
+      <button type="submit" class="btn btn-primary">
+        <i class="fas fa-sign-in-alt"></i> Login
+      </button>
+      <div class="options">
+        <a href="#">Forgot Password?</a>
+        <a href="#">Create Account</a>
+      </div>
+    </form>
+
+    <div class="divider">or login with</div>
+
+    <div class="social-login">
+      <button class="social-btn"><i class="fab fa-google"></i></button>
+      <button class="social-btn"><i class="fab fa-facebook-f"></i></button>
+      <button class="social-btn"><i class="fab fa-github"></i></button>
+    </div>
+  </div>
+
+  <script>
+    document.getElementById('loginForm').addEventListener('submit', function(e) {
+      e.preventDefault();
+      
+      const username = document.getElementById('username').value.trim();
+      const password = document.getElementById('password').value.trim();
+      const errorMsg = document.getElementById('errorMsg');
+
+      // Clear previous error
+      errorMsg.style.display = 'none';
+
+      // Admin login: username=admin, password=admin123
+      if (username.toLowerCase() === 'admin' && password === 'admin123') {
+        sessionStorage.setItem('userRole', 'admin');
+        sessionStorage.setItem('adminPassword', password);
+        window.location.href = '/admin.html';
+        return;
+      }
+
+      // User login: any username with password=user123
+      if (password === 'user123' || (username && password && username.toLowerCase() !== 'admin')) {
+        sessionStorage.setItem('userRole', 'user');
+        window.location.href = '/user.html';
+        return;
+      }
+
+      // Invalid credentials
+      errorMsg.textContent = 'Invalid username or password';
+      errorMsg.style.display = 'block';
+    });
+  </script>
+</body>
+</html>
